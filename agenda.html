@@ -19,28 +19,39 @@
     <section>
       <h2>Novo Agendamento</h2>
 
-      <form id="form-agendamento">
+     <form id="form-agendamento">
 
-        <input type="text" id="cliente" placeholder="Nome do cliente" required>
+  <label for="cliente">Nome do cliente</label>
+  <input type="text" id="cliente" placeholder="Ex: Gabriel" required>
 
-        <input type="text" id="carro" placeholder="Carro / modelo" required>
+  <label for="carro">Carro / modelo</label>
+  <input type="text" id="carro" placeholder="Ex: BMW 320i" required>
 
-        <input type="text" id="placa" placeholder="Placa">
+  <label for="placa">Placa</label>
+  <input type="text" id="placa" placeholder="Ex: ABC1D23">
 
-        <input type="text" id="servico" placeholder="Serviço" required>
+  <label for="servico">Serviço</label>
+  <input type="text" id="servico" placeholder="Ex: Instalação de câmera de ré" required>
 
-        <input type="date" id="data" required>
+  <label for="data">Data</label>
+  <input type="date" id="data" required>
 
-        <input type="time" id="hora" required>
-         <select id="status" required>
-          <option value="Agendado">Agendado</option>
-          <option value="Em serviço">Em serviço</option>
-          <option value="Pronto">Pronto</option>
-          <option value="Entregue">Entregue</option>
-         </select>
+  <label for="hora">Hora</label>
+  <input type="time" id="hora" required>
 
-        <button type="submit">Salvar Agendamento</button>
-       </form>
+  <label for="status">Status</label>
+  <select id="status" required>
+    <option value="Agendado">Agendado</option>
+    <option value="Em serviço">Em serviço</option>
+    <option value="Pronto">Pronto</option>
+    <option value="Entregue">Entregue</option>
+  </select>
+
+  <button type="submit" id="btn-salvar-agendamento">
+  Salvar Agendamento
+</button>
+
+</form>
     </section>
 
     <section>

@@ -1,6 +1,9 @@
 const form = document.getElementById("form-agendamento");
 const lista = document.getElementById("lista-agendamentos");
 const buscaAgendamento = document.getElementById("busca-agendamento");
+const btnSalvarAgendamento = document.getElementById("btn-salvar-agendamento");
+
+let indiceEdicao = null;
 
 let agendamentos = JSON.parse(localStorage.getItem("agendamentos")) || [];
 
@@ -72,14 +75,39 @@ const agendamentosFiltrados = agendamentos.filter((agendamento) => {
         </option>
       </select>
 
-      <button onclick="excluirAgendamento(${index})">
-      Excluir
-      </button>
+      <button class="btn-editar" onclick="editarAgendamento(${index})">
+  Editar
+</button>
+
+<button class="btn-excluir" onclick="excluirAgendamento(${index})">
+  Excluir
+</button>
 
       <hr>
     `;
 
     lista.appendChild(item);
+  });
+}
+
+function editarAgendamento(index) {
+  const agendamento = agendamentos[index];
+
+  document.getElementById("cliente").value = agendamento.cliente;
+  document.getElementById("carro").value = agendamento.carro;
+  document.getElementById("placa").value = agendamento.placa || "";
+  document.getElementById("servico").value = agendamento.servico;
+  document.getElementById("data").value = agendamento.data;
+  document.getElementById("hora").value = agendamento.hora;
+  document.getElementById("status").value = agendamento.status || "Agendado";
+
+  indiceEdicao = index;
+
+  btnSalvarAgendamento.textContent = "Atualizar Agendamento";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
 }
 
@@ -102,7 +130,14 @@ form.addEventListener("submit", function(event) {
     status: document.getElementById("status").value
   };
 
+  if (indiceEdicao === null) {
   agendamentos.push(novoAgendamento);
+} else {
+  agendamentos[indiceEdicao] = novoAgendamento;
+  indiceEdicao = null;
+
+  btnSalvarAgendamento.textContent = "Salvar Agendamento";
+}
 
   salvarAgendamentos();
 
@@ -125,3 +160,24 @@ buscaAgendamento.addEventListener("input", function() {
 });
 
 mostrarAgendamentos();
+function editarAgendamento(index) {
+  const agendamento = agendamentos[index];
+
+  document.getElementById("cliente").value = agendamento.cliente;
+  document.getElementById("carro").value = agendamento.carro;
+  document.getElementById("placa").value = agendamento.placa;
+  document.getElementById("servico").value = agendamento.servico;
+  document.getElementById("data").value = agendamento.data;
+  document.getElementById("hora").value = agendamento.hora;
+  document.getElementById("status").value = agendamento.status || "Agendado";
+
+  agendamentos.splice(index, 1);
+
+  salvarAgendamentos();
+  mostrarAgendamentos();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}

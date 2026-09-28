@@ -200,3 +200,39 @@ select:focus {
   color: #aaa;
   font-size: 14px;
 }
+label {
+  font-weight: bold;
+  margin-bottom: -5px;
+  display: block;
+}
+.btn-entrada {
+  background: #198754;
+}
+
+.btn-entrada:hover {
+  background: #157347;
+}
+
+.btn-saida {
+  background: #d97706;
+}
+
+.btn-saida:hover {
+  background: #b45309;
+}
+
+.btn-editar {
+  background: #3b4a5a;
+}
+
+.btn-editar:hover {
+  background: #506273;
+}
+
+.btn-excluir {
+  background: #b00020;
+}
+
+.btn-excluir:hover {
+  background: #d00025;
+}

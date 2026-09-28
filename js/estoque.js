@@ -1,6 +1,7 @@
 const formProduto = document.getElementById("form-produto");
 const listaProdutos = document.getElementById("lista-produtos");
 const buscaProduto = document.getElementById("busca-produto");
+let indiceEdicao = null;
 
 let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 
@@ -36,11 +37,10 @@ function mostrarProdutos() {
       <p><strong>Custo:</strong> R$ ${produto.custo.toFixed(2)}</p>
       <p><strong>Venda:</strong> R$ ${produto.venda.toFixed(2)}</p>
 
-      <button onclick="entradaProduto(${index})">+ Entrada</button>
-      <button onclick="saidaProduto(${index})">- Saída</button>
-      <button onclick="excluirProduto(${index})">
-        Excluir
-      </button>
+     <button class="btn-entrada" onclick="entradaProduto(${index})">+ Entrada</button>
+<button class="btn-saida" onclick="saidaProduto(${index})">- Saída</button>
+<button class="btn-editar" onclick="editarProduto(${index})">Editar</button>
+<button class="btn-excluir" onclick="excluirProduto(${index})">Excluir</button>
 
       <hr>
     `;
@@ -79,7 +79,12 @@ formProduto.addEventListener("submit", function(event) {
     venda: Number(document.getElementById("venda").value) || 0
   };
 
+  if (indiceEdicao === null) {
   produtos.push(novoProduto);
+} else {
+  produtos[indiceEdicao] = novoProduto;
+  indiceEdicao = null;
+}
 
   salvarProdutos();
 
@@ -129,9 +134,10 @@ function mostrarProdutos(filtro = "") {
       <p><strong>Custo:</strong> R$ ${produto.custo.toFixed(2)}</p>
       <p><strong>Venda:</strong> R$ ${produto.venda.toFixed(2)}</p>
 
-      <button onclick="entradaProduto(${index})">+ Entrada</button>
-      <button onclick="saidaProduto(${index})">- Saída</button>
-      <button onclick="excluirProduto(${index})">Excluir</button>
+      <button class="btn-entrada" onclick="entradaProduto(${index})">+ Entrada</button>
+<button class="btn-saida" onclick="saidaProduto(${index})">- Saída</button>
+<button class="btn-editar" onclick="editarProduto(${index})">Editar</button>
+<button class="btn-excluir" onclick="excluirProduto(${index})">Excluir</button>
 
       <hr>
     `;
@@ -139,6 +145,43 @@ function mostrarProdutos(filtro = "") {
     listaProdutos.appendChild(item);
   });
 }
+
+function editarProduto(index) {
+  const produto = produtos[index];
+
+  document.getElementById("produto").value = produto.nome;
+  document.getElementById("marca").value = produto.marca;
+  document.getElementById("quantidade").value = produto.quantidade;
+  document.getElementById("estoque-minimo").value = produto.estoqueMinimo;
+  document.getElementById("custo").value = produto.custo;
+  document.getElementById("venda").value = produto.venda;
+
+  indiceEdicao = index;
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function editarProduto(index) {
+  const produto = produtos[index];
+
+  document.getElementById("produto").value = produto.nome;
+  document.getElementById("marca").value = produto.marca;
+  document.getElementById("quantidade").value = produto.quantidade;
+  document.getElementById("estoque-minimo").value = produto.estoqueMinimo;
+  document.getElementById("custo").value = produto.custo;
+  document.getElementById("venda").value = produto.venda;
+
+  indiceEdicao = index;
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
 buscaProduto.addEventListener("input", function() {
   mostrarProdutos(buscaProduto.value);
 });
