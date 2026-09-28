@@ -1,5 +1,6 @@
 const form = document.getElementById("form-agendamento");
 const lista = document.getElementById("lista-agendamentos");
+const buscaAgendamento = document.getElementById("busca-agendamento");
 
 let agendamentos = JSON.parse(localStorage.getItem("agendamentos")) || [];
 
@@ -7,8 +8,21 @@ function salvarAgendamentos() {
   localStorage.setItem("agendamentos", JSON.stringify(agendamentos));
 }
 
-function mostrarAgendamentos() {
+function mostrarAgendamentos(filtro = "") {
   lista.innerHTML = "";
+  const textoBusca = filtro.toLowerCase();
+
+const agendamentosFiltrados = agendamentos.filter((agendamento) => {
+  const cliente = agendamento.cliente.toLowerCase();
+  const carro = agendamento.carro.toLowerCase();
+  const placa = (agendamento.placa || "").toLowerCase();
+
+  return (
+    cliente.includes(textoBusca) ||
+    carro.includes(textoBusca) ||
+    placa.includes(textoBusca)
+  );
+});
 
   if (agendamentos.length === 0) {
     lista.innerHTML = "<p>Nenhum agendamento cadastrado.</p>";
@@ -21,7 +35,8 @@ function mostrarAgendamentos() {
   return dataHoraA.localeCompare(dataHoraB);
 });
 
-  agendamentos.forEach((agendamento, index) => {
+  agendamentosFiltrados.forEach((agendamento) => {
+  const index = agendamentos.indexOf(agendamento);
     const item = document.createElement("div");
     item.classList.add("card-agendamento");
     const dataFormatada = new Date(
@@ -105,5 +120,8 @@ function excluirAgendamento(index) {
     mostrarAgendamentos();
   }
 }
+buscaAgendamento.addEventListener("input", function() {
+  mostrarAgendamentos(buscaAgendamento.value);
+});
 
 mostrarAgendamentos();
