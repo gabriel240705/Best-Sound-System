@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estoque - Best Sound</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Estoque</h1>
+    <p>Best Sound</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Novo Produto</h2>
+
+      <form id="form-produto">
+
+        <input type="text" id="produto" placeholder="Nome do produto" required>
+
+        <input type="text" id="marca" placeholder="Marca">
+
+        <input type="number" id="quantidade" placeholder="Quantidade" min="0" required>
+
+        <input type="number" id="estoque-minimo" placeholder="Estoque mínimo" min="0" required>
+
+        <input type="number" id="custo" placeholder="Preço de custo" step="0.01">
+
+        <input type="number" id="venda" placeholder="Preço de venda" step="0.01">
+
+        <button type="submit">Salvar Produto</button>
+
+      </form>
+    </section>
+
+    <section>
+      <h2>Produtos</h2>
+
+      <div id="lista-produtos">
+        <p>Nenhum produto cadastrado.</p>
+      </div>
+    </section>
+
+    <a href="index.html">
+      <button>Voltar</button>
+    </a>
+
+  </main>
+
+  <script src="js/estoque.js"></script>
+
+</body>
+</html>

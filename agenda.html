@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda - Best Sound</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Agenda</h1>
+    <p>Best Sound</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Novo Agendamento</h2>
+
+      <form id="form-agendamento">
+
+        <input type="text" id="cliente" placeholder="Nome do cliente" required>
+
+        <input type="text" id="carro" placeholder="Carro / modelo" required>
+
+        <input type="text" id="placa" placeholder="Placa">
+
+        <input type="text" id="servico" placeholder="Serviço" required>
+
+        <input type="date" id="data" required>
+
+        <input type="time" id="hora" required>
+
+        <button type="submit">Salvar Agendamento</button>
+
+      </form>
+    </section>
+
+    <section>
+      <h2>Agendamentos</h2>
+
+      <div id="lista-agendamentos">
+        <p>Nenhum agendamento cadastrado.</p>
+      </div>
+    </section>
+
+    <a href="index.html">
+      <button>Voltar</button>
+    </a>
+
+  </main>
+
+  <script src="js/agenda.js"></script>
+
+</body>
+</html>
