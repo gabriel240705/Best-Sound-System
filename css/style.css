@@ -112,3 +112,41 @@ input {
 input:focus {
   outline: 1px solid #d60000;
 }
+
+select {
+  background: #1c1c1c;
+  color: white;
+  border: 1px solid #333;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+select:focus {
+  outline: 1px solid #d60000;
+}
+.card-agendamento {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-left: 4px solid #d60000;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 15px;
+}
+
+.card-agendamento h3 {
+  color: #ff1a1a;
+  margin-bottom: 10px;
+}
+
+.card-agendamento p {
+  margin: 6px 0;
+}
+
+.card-agendamento select {
+  margin: 8px 10px 10px 0;
+}
+
+.card-agendamento hr {
+  display: none;
+}
