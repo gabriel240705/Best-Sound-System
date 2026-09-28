@@ -150,3 +150,29 @@ select:focus {
 .card-agendamento hr {
   display: none;
 }
+.card-produto {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-left: 4px solid #555;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 15px;
+}
+
+.card-produto h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.card-produto p {
+  margin: 6px 0;
+}
+
+.estoque-baixo-card {
+  border-left-color: #d60000;
+}
+
+.alerta-estoque {
+  color: #ff4040;
+  font-weight: bold;
+}

@@ -26,7 +26,19 @@ function atualizarResumo() {
   const agendamentos = JSON.parse(localStorage.getItem("agendamentos")) || [];
   const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 
-  totalAgendamentos.textContent = agendamentos.length;
+  const hoje = new Date();
+
+  const ano = hoje.getFullYear();
+  const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+  const dia = String(hoje.getDate()).padStart(2, "0");
+
+  const dataHoje = `${ano}-${mes}-${dia}`;
+
+  const agendamentosHoje = agendamentos.filter((agendamento) => {
+  return agendamento.data === dataHoje;
+});
+
+totalAgendamentos.textContent = agendamentosHoje.length;
 
   totalProdutos.textContent = produtos.length;
 
